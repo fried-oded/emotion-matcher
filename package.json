@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/fried-oded/emotion-matcher/issues"
   },
-  "homepage": "https://github.com/fried-oded/emotion-matcher#readme"
+  "homepage": "https://github.com/fried-oded/emotion-matcher#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
