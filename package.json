@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fried-oded/emotion-matcher#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "underscore": "^1.9.1"
   }
 }
