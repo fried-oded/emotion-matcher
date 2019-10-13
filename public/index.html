@@ -1,0 +1,105 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="task.js"></script>
+
+    <title>Emotion Matcher</title>
+
+    <style>
+        html, body {
+    height: 100%;
+    }
+    .debug-border {
+        border: 1px dotted black;
+    }
+    </style>
+
+  </head>
+
+  <body>
+    <div class="container">
+        <h1>hi</h1>
+    </div>
+
+    <div class="container h-50" id="mainScreen">
+        
+
+        <!-- start panel -->
+        <div class="container h-100 debug-border" id="startPanel">
+            <div class="h-100 d-flex justify-content-center">
+                <div class="h-25 w-75 my-auto debug-border">
+                    <div class="h-50 my-auto d-flex justify-content-center">
+                        <div class="my-auto">
+                            <h2>subject number: </h2>
+                        </div>
+                        <div class="my-auto">
+                                <input type="text" class="w-100" id="subjectNumTextbox">  
+                        </div>
+                    </div>
+                    <div class="h-50 my-auto d-flex justify-content-center">
+                        <div class="my-auto">
+                            <button type="button" class="btn btn-outline-primary btn-lg" id="startBtn">start</button>     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- task panel -->
+        <div class="container h-100 debug-border" id="taskPanel">
+            <!-- images -->
+            <div class="h-75 debug-border">
+                <!-- pics panel (TODO: set picture sourrce from controller) -->
+                <div class="container h-100" id="picsPanel">
+                    <div class="d-flex justify-content-around h-100">
+                        <div class="col-4 my-auto">
+                                <img class="img-fluid" src="pics/A.jpg" id="picA">
+                        </div>
+                        <div class="col-4 my-auto">
+                                <img class="img-fluid" src="pics/A.jpg" id="picB">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- plus panel -->
+                <div class="container h-100" id="plusPanel">
+                    <div class="d-flex justify-content-around h-100">
+                        <h1 class="display-2 my-auto">+</h1>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- buttons -->
+            <div class="h-25 d-flex justify-content-center debug-border"> 
+                <div class="col-1 my-auto">
+                        <button type="button" class="btn btn-secondary" id="taskBtnYes" disabled>Yes</button>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-1 my-auto">
+                        <button type="button" class="btn btn-secondary" id="taskBtnNo" disabled>No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+            <h1>config</h1>
+            <div class="checkbox">
+                    <label><input type="checkbox" value="" id=stepByStepChk>step by step</label>
+            </div>
+            <button type="button" class="btn btn-outline-primary btn-lg" id="stepBtn" disabled>step</button> 
+    </div>
+
+
+
+  </body>
+</html>
