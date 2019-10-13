@@ -69,6 +69,19 @@ class TaskPanel{
 
         this.yesBtn = $("#taskBtnYes");
         this.noBtn  = $("#taskBtnNo");
+
+        $(document).keydown(event => {
+            // BINDING KEYS TO BUTTONS
+            // find keys here https://keycode.info/
+            var YES_KEY = "KeyY"
+            var NO_KEY  = "KeyN"
+            if (event.code === YES_KEY && !this.yesBtn.prop("disabled")){
+                this.yesBtn.click()
+            }
+            else if (event.code === NO_KEY && !this.noBtn.prop("disabled")){
+                this.noBtn.click()
+            }
+        })
     }
 
     hidePanels(){
