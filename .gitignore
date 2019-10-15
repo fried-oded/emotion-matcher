@@ -126,3 +126,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/node,code,windows
+
+
+# ignore result files
+results/*
