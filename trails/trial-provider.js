@@ -15,7 +15,7 @@ function randomPair(list1, list2){
     //preventing same person in pair 
     //(assuming person apears only once in each list)
     //(also assuming this is not the last item in the list. 
-    // this can be achieved by taking the same emption pairs last)
+    // this can be achieved by taking the same emotion pairs last)
     var picA = list1.pop();
     var picB = list2.pop();
     if(picA.personId == picB.personId){
