@@ -5,8 +5,8 @@ var PUBLIC_PICS_FOLDER = 'public/'
 function prepareImages(subdir){
     return _.shuffle(fs.readdirSync(PUBLIC_PICS_FOLDER + subdir).map(picName => {
         return {
-            picSource: subdir + picName,
-            personId: picName.split('_')[0]
+            'picSource': subdir + picName,
+            'personId': picName.split('_')[0]
         }
     }))
 }
@@ -31,10 +31,10 @@ function popPairs(num, list1, list2, category, correctAnswer){
     return Array.from(Array(num), function(){
         var pair =  randomPair(list1, list2)
         return {
-            picSourceA: pair[0].picSource,
-            picSourceB: pair[1].picSource,
-            category: category,
-            correctAnswer: correctAnswer
+            'picSourceA': pair[0].picSource,
+            'picSourceB': pair[1].picSource,
+            'category': category,
+            'correctAnswer': correctAnswer
         }
     })
 }
@@ -61,5 +61,5 @@ function getTrials(){
 }
 
 module.exports = {
-    getTrials: getTrials
+    'getTrials': getTrials
   };

@@ -39,7 +39,7 @@ class StartPanel{
 
         self.startBtn.click(function () {
             if (self.validate()){
-                self.onStartCallbacks.forEach(f => f(subjectNumTextbox.val))
+                self.onStartCallbacks.forEach(f => f(self.subjectNumTextbox.val()))
             }
         });
     }
@@ -208,14 +208,10 @@ function stepByStep(){
 }
 
 
-
-
-var ms;
-var tp;
 $(async function(){
-    ms = new MainScreen()
-    tp = new TaskPanel()
-    sp = new StartPanel()
+    var ms = new MainScreen()
+    var tp = new TaskPanel()
+    var sp = new StartPanel()
 
     var trials = await requestData("trials")
     console.log(trials)
@@ -226,10 +222,14 @@ $(async function(){
     
     ms.showPanel(ms.taskPanel);
     console.log("starting trials");
-    var results = await tp.executeAllTrials(trials)
+    var results = await tp.executeAllTrials(trials.slice(0,3))
     console.log(results);
     console.log("done trials");
-    
+
+    $.post("results", {
+        'subject': subjectNumber,
+        'results': results
+    })
 });
 
 
