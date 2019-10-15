@@ -13,6 +13,7 @@ var RESULTS_FOLDER = 'results/'
 
 function saveResults(subject, results){
     const csvWriter = createCsvWriter({
+        //TODO: add timestamp to file name
         'path': RESULTS_FOLDER + subject + '.csv',
         'header': RESULT_HEADERS
       });
