@@ -226,7 +226,7 @@ $(async function(){
     
     ms.showPanel(ms.taskPanel);
     console.log("starting trials");
-    var results = await tp.executeAllTrials(trials.slice(0, 5))
+    var results = await tp.executeAllTrials(trials)
     console.log(results);
     console.log("done trials");
     
