@@ -12,9 +12,9 @@ var RESULT_HEADERS = [
 var RESULTS_FOLDER = 'results/'
 
 function saveResults(subject, results){
+    var ts = Date.now() / 1000 | 0;
     const csvWriter = createCsvWriter({
-        //TODO: add timestamp to file name
-        'path': RESULTS_FOLDER + subject + '.csv',
+        'path': RESULTS_FOLDER + subject + '_' + ts + '.csv',
         'header': RESULT_HEADERS
       });
       
