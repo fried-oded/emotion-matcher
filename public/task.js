@@ -38,8 +38,9 @@ class StartPanel{
         self.onStartCallbacks = [];
 
         self.startBtn.click(function () {
-            if (self.validate()){
-                self.onStartCallbacks.forEach(f => f(self.subjectNumTextbox.val()))
+            var subjectId = self.subjectNumTextbox.val()
+            if (self.validate(subjectId)){
+                self.onStartCallbacks.forEach(f => f())
             }
         });
     }
@@ -51,9 +52,14 @@ class StartPanel{
         });
     }
 
-    validate(){
-        //TODO: validate input (subject number exists etc..)
-        return true;
+    validate(subjectId){
+        if(subjectId){
+            return true;
+        }
+        else{
+            console.warn("subject id is empty");
+            return false;
+        }            
     }
 }
 
