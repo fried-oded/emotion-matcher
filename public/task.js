@@ -102,6 +102,7 @@ class TaskPanel{
 
     getUserAnswer(correctAnswer){
         var self = this;
+        var startTs = Date.now()
         self.yesBtn.prop("disabled", false);
         self.noBtn.prop("disabled", false);
 
@@ -125,7 +126,10 @@ class TaskPanel{
                         $(this).removeClass("btn-secondary").addClass("btn-danger");
                     }
                     
-                    resolve(chosenAnswer);
+                    resolve({
+                        'chosenAnswer': chosenAnswer,
+                        'responseTime': Date.now() - startTs
+                    });
                 }
             };
             
@@ -149,8 +153,9 @@ class TaskPanel{
 
         console.debug("hiding images. waiting for user choice");
         this.hidePanels()
-        //todo: measure response time
-        var userAnswer = await userAnswerPromise;
+        var userResponse = await userAnswerPromise;
+        var userAnswer = userResponse.chosenAnswer;
+        var responseTime = userResponse.responseTime;
 
         console.debug("showing feedback. (user correct: " + (userAnswer == correctAnswer) + ")");
         //todo: feedback
@@ -166,8 +171,7 @@ class TaskPanel{
         console.debug("done");
         return {
             'userAnswer': userAnswer,
-            //TODO: return response time
-            'responseTime': null
+            'responseTime': responseTime
         };
     }
 
