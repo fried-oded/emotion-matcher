@@ -14,8 +14,9 @@ class MainScreen{
     constructor(){
         this.startPanel = $("#startPanel");
         this.taskPanel = $("#taskPanel");    
+        this.instructionsPanel = $("#instructionsPanel"); 
         
-        this.panels = [this.startPanel, this.taskPanel];
+        this.panels = [this.startPanel, this.taskPanel, this.instructionsPanel];
         this.showPanel(this.startPanel)
     }
     
@@ -62,6 +63,21 @@ class StartPanel{
         }            
     }
 }
+
+class InstructionsPanel{
+    constructor(){
+        var self = this;
+        self.startBtn = $("#startDemoBtn");
+    }
+
+    async userStartDemo(){
+        var self = this;
+        return new Promise(resolve => {
+            self.startBtn.click(resolve);
+        });
+    }
+}
+
 
 class TaskPanel{
     constructor(){
@@ -225,8 +241,10 @@ function stepByStep(){
 
 $(async function(){
     var ms = new MainScreen()
-    var tp = new TaskPanel()
+    var ip = new InstructionsPanel()
     var sp = new StartPanel()
+    var tp = new TaskPanel()
+    
 
     var trials = await requestData("trials")
     console.log(trials)
@@ -234,9 +252,16 @@ $(async function(){
     ms.showPanel(ms.startPanel);
     var subjectNumber = await sp.start()
     console.log("subject number: " + subjectNumber)
+
+    console.log("showing instructions. waiting for user")
+    ms.showPanel(ms.instructionsPanel);
+    await ip.userStartDemo()
+
+
+
     
-    ms.showPanel(ms.taskPanel);
     console.log("starting trials");
+    ms.showPanel(ms.taskPanel);
     var results = await tp.executeAllTrials(trials.slice(0,3))
     console.log(results);
     console.log("done trials");

@@ -7,6 +7,7 @@ var RESULT_HEADERS = [
     {id: 'courrectAnswer', title: 'courrectAnswer'},
     {id: 'userAnswer', title: 'userAnswer'},
     {id: 'responseTime', title: 'responseTime'}
+    //TODO: add category (NN, HS...)
 ]
 
 var RESULTS_FOLDER = 'results/'
