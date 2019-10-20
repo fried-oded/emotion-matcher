@@ -138,13 +138,23 @@ class TaskPanel{
           });
     }
 
+    clearFeedback(){
+        this.yesBtn.removeClass("btn-danger btn-success").addClass("btn-secondary");
+        this.noBtn.removeClass("btn-danger btn-success").addClass("btn-secondary");
+    }
+
+    async showCentralFixation(time){
+        this.clearFeedback();
+        this.showPanel(this.plusPanel);
+        await sleep(time);
+    }
+
     async executeOneTrial(picSourceA, picSourceB, correctAnswer){
         this.picA.attr("src",picSourceA);
         this.picB.attr("src",picSourceB);
         
         console.debug("show central fixation");
-        this.showPanel(this.plusPanel);
-        await sleep(500);
+        await this.showCentralFixation(500);
 
         console.debug("show image pair");
         this.showPanel(this.picsPanel);
@@ -152,21 +162,13 @@ class TaskPanel{
         await sleep(750);
 
         console.debug("hiding images. waiting for user choice");
-        this.hidePanels()
+        this.hidePanels();
         var userResponse = await userAnswerPromise;
         var userAnswer = userResponse.chosenAnswer;
         var responseTime = userResponse.responseTime;
 
         console.debug("showing feedback. (user correct: " + (userAnswer == correctAnswer) + ")");
-        //todo: feedback
         await sleep(500);
-        //todo: clear feedback if needed
-        this.yesBtn.removeClass("btn-danger btn-success").addClass("btn-secondary")
-        this.noBtn.removeClass("btn-danger btn-success").addClass("btn-secondary")
-
-        console.debug("show central fixation for inter-trial-interval");
-        this.showPanel(this.plusPanel);
-        await sleep(1750);   
         
         console.debug("done");
         return {
@@ -195,6 +197,9 @@ class TaskPanel{
                 'userAnswer': trialResult.userAnswer,
                 'responseTime': trialResult.responseTime
             });
+
+            console.debug("show central fixation for inter-trial-interval");
+            await this.showCentralFixation(1750);
         }
 
         return results;
