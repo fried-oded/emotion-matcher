@@ -156,9 +156,11 @@ class TaskPanel{
                     //show feedback
                     if(chosenAnswer == correctAnswer){
                         $(this).removeClass("btn-secondary").addClass("btn-success");
+                        $("#correctSound")[0].play()
                     }
                     else{
                         $(this).removeClass("btn-secondary").addClass("btn-danger");
+                        $("#wrongSound")[0].play()
                     }
                     
                     resolve({
@@ -259,6 +261,9 @@ function stepByStep(){
 
 
 $(async function(){
+    //test
+    $("#beepBtn").click(function(){$("#beep")[0].play()})
+    //----
     var ms = new MainScreen()
     var ip = new InstructionsPanel()
     var sp = new StartPanel()
