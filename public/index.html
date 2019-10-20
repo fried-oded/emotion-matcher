@@ -59,10 +59,11 @@
                 <div class="h-100 w-75 my-auto debug-border">
                     <div class="h-75 my-auto d-flex justify-content-center">
                         <h3 class="my-auto text-right" dir=rtl>
-                        <p>במהלך הזמן הבא, יופיע על המסך 2 תמונות זו לצד זו.</p>
-                        <p>בכל תמונה תופיע דמות אשר יכולה להביע אחד משלושת הרגשות הבאים: שמח, עצוב או ניטרלי.</p>
-                        <p>עליך לבחור בכפתור "זהה" כאשר ב2 התמונות מופיעה אותה הבעת רגש, ו"שונה" כאשר הרגש המובע בתמונה אחת אינו זהה לרגש המובע בתמונה שלצידה.</p>
-                        <p>נסי/נסה להגיב במהירות ככל יכולתך. שים/שימי לב! התמונות יופיע לזמן קצר בלבד, ניתן לבחור תשובה גם לאחר שהתמונות ייעלמו.</p>
+                            <!-- TODO: add feedback explanation -->
+                            <p>במהלך הזמן הבא, יופיע על המסך 2 תמונות זו לצד זו.</p>
+                            <p>בכל תמונה תופיע דמות אשר יכולה להביע אחד משלושת הרגשות הבאים: שמח, עצוב או ניטרלי.</p>
+                            <p>עליך לבחור בכפתור "זהה" כאשר ב2 התמונות מופיעה אותה הבעת רגש, ו"שונה" כאשר הרגש המובע בתמונה אחת אינו זהה לרגש המובע בתמונה שלצידה.</p>
+                            <p>נסי/נסה להגיב במהירות ככל יכולתך. שים/שימי לב! התמונות יופיע לזמן קצר בלבד, ניתן לבחור תשובה גם לאחר שהתמונות ייעלמו.</p>
                         </h3>
                     </div>
                     <div class="h-25 my-auto d-flex justify-content-center">
@@ -76,8 +77,9 @@
 
         <!-- task panel -->
         <div class="container h-100 debug-border" id="taskPanel" style="display:none">
-            <!-- images -->
+            <!-- top -->
             <div class="h-75 debug-border">
+                <!-- pics panel -->
                 <div class="container h-100" id="picsPanel">
                     <div class="d-flex justify-content-around h-100">
                         <div class="col-4 my-auto">
@@ -93,6 +95,39 @@
                 <div class="container h-100" id="plusPanel">
                     <div class="d-flex justify-content-around h-100">
                         <h1 class="display-2 my-auto">+</h1>
+                    </div>
+                </div>
+
+                <!-- text panel -->
+                <div class="container h-75 my-auto" id="intructionTaskPanel">
+                    <div class="h-75" id="textSame" style="display:none">
+                        <div class="h-100 d-flex justify-content-center">
+                            <h3 class="my-auto text-right" dir=rtl>
+                                <p>הרגש המובע בתמונה אחת זהה לרגש המובע בתמונה השנייה ולכן התשובה הנכונה היא "זהה"</p>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="h-75" id="textDiff" style="display:none">
+                        <div class="h-100 d-flex justify-content-center">
+                            <h3 class="my-auto text-right" dir=rtl>
+                                <p>הרגש המובע בתמונה אחת שונה מהרגש המובע בתמונה השנייה ולכן התשובה הנכונה היא "שונה"</p>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="h-75" id="textStart" style="display:none">
+                        <div class="h-100 d-flex justify-content-center">
+                            <h3 class="my-auto text-right" dir=rtl>
+                                <p>לחץ "המשך" לתחילת המשימה</p>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="h-25 my-auto d-flex justify-content-center">
+                        <div class="my-auto">
+                            <button type="button" class="btn btn-outline-primary btn-lg" id="textContinueBtn">המשך</button>     
+                        </div>
                     </div>
                 </div>
             </div>

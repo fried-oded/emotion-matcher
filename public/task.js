@@ -83,7 +83,8 @@ class TaskPanel{
     constructor(){
         this.picsPanel = $("#picsPanel");
         this.plusPanel = $("#plusPanel");       
-        this.panels = [this.picsPanel, this.plusPanel];
+        this.textPanel = $("#intructionTaskPanel");       
+        this.panels = [this.picsPanel, this.plusPanel, this.textPanel];
         this.showPanel(this.plusPanel)
 
         this.picA = $("#picA");
@@ -91,6 +92,13 @@ class TaskPanel{
 
         this.yesBtn = $("#taskBtnYes");
         this.noBtn  = $("#taskBtnNo");
+
+        this.textSame = $("#textSame");
+        this.textDiff = $("#textDiff");
+        this.textStart = $("#textStart");
+        this.textFrames = [this.textSame, this.textDiff, this.textStart]
+        this.continueBtn = $("#textContinueBtn");
+
 
         $(document).keydown(event => {
             // BINDING KEYS TO BUTTONS
@@ -104,6 +112,17 @@ class TaskPanel{
                 this.noBtn.click()
             }
         })
+    }
+
+    showText(textFrame){
+        var self = this;
+        self.textFrames.forEach(f => {f.hide()});
+        textFrame.show()
+        self.showPanel(self.textPanel)
+
+        return new Promise(resolve => {
+            self.continueBtn.click(resolve);
+        });
     }
 
     hidePanels(){
@@ -257,10 +276,18 @@ $(async function(){
     ms.showPanel(ms.instructionsPanel);
     await ip.userStartDemo()
 
-    console.log("showing instructions. waiting for user")
+    console.log("showing demo 1")
+    ms.showPanel(ms.taskPanel);
+    await tp.executeOneTrial("/pics/demo/A.jpg", "/pics/demo/A.jpg", true)
+    await tp.showText(tp.textSame)
 
+    console.log("showing demo 2")
+    await tp.executeOneTrial("/pics/demo/B.jpg", "/pics/demo/C.jpg", false)
+    await tp.showText(tp.textDiff)
 
-
+    console.log("waiting to start")
+    tp.clearFeedback()
+    await tp.showText(tp.textStart)
     
     console.log("starting trials");
     ms.showPanel(ms.taskPanel);
