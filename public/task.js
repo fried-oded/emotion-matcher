@@ -250,12 +250,14 @@ $(async function(){
     console.log(trials)
 
     ms.showPanel(ms.startPanel);
-    var subjectNumber = await sp.start()
-    console.log("subject number: " + subjectNumber)
+    var subjectId = await sp.start()
+    console.log("subject id: " + subjectId)
 
     console.log("showing instructions. waiting for user")
     ms.showPanel(ms.instructionsPanel);
     await ip.userStartDemo()
+
+    console.log("showing instructions. waiting for user")
 
 
 

@@ -1,5 +1,5 @@
-const _ = require('underscore');
-var fs = require('fs');
+const _  = require('underscore');
+const fs = require('fs');
 
 var PUBLIC_PICS_FOLDER = 'public/'
 function prepareImages(subdir){
@@ -27,8 +27,8 @@ function randomPair(list1, list2){
     return _.shuffle([picA, picB])
 }
 
-function popPairs(num, list1, list2, category, correctAnswer){
-    return Array.from(Array(num), function(){
+function popPairs(numOfPairs, list1, list2, category, correctAnswer){
+    return Array.from(Array(numOfPairs), function(){
         var pair =  randomPair(list1, list2)
         return {
             'picSourceA': pair[0].picSource,
@@ -47,6 +47,7 @@ function getTrials(){
     var minstimHappy = prepareImages('pics/minstim/happy/')
     var minstimSad   = prepareImages('pics/minstim/sad/')
 
+    // note: please list the "same emotion" pairs at the end
     return _.shuffle([].concat(
         popPairs(8, kdefNeutral,  kdefSad,      'NS', false),
         popPairs(8, kdefNeutral,  kdefHappy,    'NH', false),
