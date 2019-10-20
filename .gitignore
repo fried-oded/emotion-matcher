@@ -130,6 +130,3 @@ $RECYCLE.BIN/
 
 # ignore result files
 results/*
-
-# pics are IP of the university
-public/pics/*
