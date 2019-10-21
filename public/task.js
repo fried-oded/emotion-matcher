@@ -261,9 +261,6 @@ function stepByStep(){
 
 
 $(async function(){
-    //test
-    $("#beepBtn").click(function(){$("#beep")[0].play()})
-    //----
     var ms = new MainScreen()
     var ip = new InstructionsPanel()
     var sp = new StartPanel()
@@ -292,6 +289,7 @@ $(async function(){
 
     console.log("waiting to start")
     tp.clearFeedback()
+    tp.continueBtn.text("התחל")
     await tp.showText(tp.textStart)
     
     console.log("starting trials");
