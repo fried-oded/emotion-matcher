@@ -41,7 +41,7 @@ class StartPanel{
         self.startBtn.click(function () {
             var subjectId = self.subjectNumTextbox.val()
             if (self.validate(subjectId)){
-                self.onStartCallbacks.forEach(f => f())
+                self.onStartCallbacks.forEach(f => f(subjectId))
             }
         });
     }
@@ -301,7 +301,7 @@ $(async function(){
     console.log("done trials");
 
     $.post("results", {
-        'subject': subjectNumber,
+        'subject': subjectId,
         'results': results
     })
 });

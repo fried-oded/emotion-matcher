@@ -20,5 +20,6 @@ app.get('/trials', function (req, res) {
 });
 
 app.post('/results', function (req, res) {
+  console.log("saving results for subject " + req.body.subject + " (" + req.body.results.length + " results)")
   resultHandler.saveResults(req.body.subject, req.body.results)
 });

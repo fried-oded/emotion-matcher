@@ -14,14 +14,15 @@ var RESULTS_FOLDER = 'results/'
 
 function saveResults(subject, results){
     var ts = Date.now() / 1000 | 0;
+    var outputPath = RESULTS_FOLDER + subject + '_' + ts + '.csv'
     const csvWriter = createCsvWriter({
-        'path': RESULTS_FOLDER + subject + '_' + ts + '.csv',
+        'path': outputPath,
         'header': RESULT_HEADERS
       });
       
       csvWriter
         .writeRecords(results)
-        .then(()=> console.log('The CSV file was written successfully'));
+        .then(()=> console.log('The CSV file was written successfully to ' + outputPath));
       
 }
 
