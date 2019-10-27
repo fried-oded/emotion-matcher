@@ -15,8 +15,9 @@ class MainScreen{
         this.startPanel = $("#startPanel");
         this.taskPanel = $("#taskPanel");    
         this.instructionsPanel = $("#instructionsPanel"); 
+        this.endingPanel = $("#endingPanel"); 
         
-        this.panels = [this.startPanel, this.taskPanel, this.instructionsPanel];
+        this.panels = [this.startPanel, this.taskPanel, this.instructionsPanel, this.endingPanel];
         this.showPanel(this.startPanel)
     }
     
@@ -297,6 +298,8 @@ $(async function(){
     var results = await tp.executeAllTrials(trials.slice(0,3))
     console.log(results);
     console.log("done trials");
+
+    ms.showPanel(ms.endingPanel)
 
     $.post("results", {
         'subject': subjectId,
