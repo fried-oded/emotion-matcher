@@ -249,6 +249,10 @@ class TaskPanel{
 
 
 //test tools
+function debug(){
+    $("#configPanel").show()
+}
+
 function stepByStep(){
     if($("#stepByStepChk").prop('checked')){
         var self = this;
