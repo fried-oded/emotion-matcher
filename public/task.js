@@ -288,11 +288,11 @@ $(async function(){
 
     console.log("showing demo 1")
     ms.showPanel(ms.taskPanel);
-    await tp.executeOneTrial("/pics/demo/A.jpg", "/pics/demo/A.jpg", true)
+    await tp.executeOneTrial("/pics/demo/same_1.jpg", "/pics/demo/same_2.jpg", true)
     await tp.showText(tp.textSame)
 
     console.log("showing demo 2")
-    await tp.executeOneTrial("/pics/demo/B.jpg", "/pics/demo/C.jpg", false)
+    await tp.executeOneTrial("/pics/demo/diff_1.jpg", "/pics/demo/diff_2.jpg", false)
     await tp.showText(tp.textDiff)
 
     console.log("waiting to start")
