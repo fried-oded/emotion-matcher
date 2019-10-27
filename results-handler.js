@@ -4,10 +4,11 @@ var RESULT_HEADERS = [
     {id: 'trialNum', title: 'trialNum'},
     {id: 'picSourceA', title: 'picSourceA'},
     {id: 'picSourceB', title: 'picSourceB'},
-    {id: 'courrectAnswer', title: 'courrectAnswer'},
+    {id: 'category', title: 'category'},
+    {id: 'correctAnswer', title: 'correctAnswer'},
     {id: 'userAnswer', title: 'userAnswer'},
+    {id: 'userCorrect', title: 'userCorrect'},
     {id: 'responseTime', title: 'responseTime'}
-    //TODO: add category (NN, HS...)
 ]
 
 var RESULTS_FOLDER = 'results/'

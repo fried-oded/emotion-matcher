@@ -231,8 +231,10 @@ class TaskPanel{
                 'trialNum': i,
                 'picSourceA': currentTrial.picSourceA,
                 'picSourceB': currentTrial.picSourceB,
-                'courrectAnswer': currentTrial.correctAnswer,
+                'category': currentTrial.category,
+                'correctAnswer': currentTrial.correctAnswer,
                 'userAnswer': trialResult.userAnswer,
+                'userCorrent': trialResult.userAnswer == currentTrial.correctAnswer,
                 'responseTime': trialResult.responseTime
             });
 
