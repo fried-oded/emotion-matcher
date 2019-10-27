@@ -234,7 +234,7 @@ class TaskPanel{
                 'category': currentTrial.category,
                 'correctAnswer': currentTrial.correctAnswer,
                 'userAnswer': trialResult.userAnswer,
-                'userCorrent': trialResult.userAnswer == currentTrial.correctAnswer,
+                'userCorrect': trialResult.userAnswer == currentTrial.correctAnswer,
                 'responseTime': trialResult.responseTime
             });
 
