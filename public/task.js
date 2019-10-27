@@ -302,7 +302,7 @@ $(async function(){
     
     console.log("starting trials");
     ms.showPanel(ms.taskPanel);
-    var results = await tp.executeAllTrials(trials.slice(0,3), subjectId)
+    var results = await tp.executeAllTrials(trials, subjectId)
     console.log(results);
     console.log("done trials");
 
