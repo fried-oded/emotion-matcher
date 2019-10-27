@@ -215,7 +215,7 @@ class TaskPanel{
         };
     }
 
-    async executeAllTrials(trials){
+    async executeAllTrials(trials, subjectId){
         var self = this;
         var results = []
         for(var i = 0; i < trials.length; i++){
@@ -228,6 +228,7 @@ class TaskPanel{
             );
 
             results.push({
+                'subjectId': subjectId,
                 'trialNum': i,
                 'picSourceA': currentTrial.picSourceA,
                 'picSourceB': currentTrial.picSourceB,
@@ -297,7 +298,7 @@ $(async function(){
     
     console.log("starting trials");
     ms.showPanel(ms.taskPanel);
-    var results = await tp.executeAllTrials(trials.slice(0,3))
+    var results = await tp.executeAllTrials(trials.slice(0,3), subjectId)
     console.log(results);
     console.log("done trials");
 

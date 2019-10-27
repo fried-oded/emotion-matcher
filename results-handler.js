@@ -1,6 +1,7 @@
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 var RESULT_HEADERS = [
+    {id: 'subjectId', title: 'subjectId'},
     {id: 'trialNum', title: 'trialNum'},
     {id: 'picSourceA', title: 'picSourceA'},
     {id: 'picSourceB', title: 'picSourceB'},
