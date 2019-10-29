@@ -104,8 +104,8 @@ class TaskPanel{
         $(document).keydown(event => {
             // BINDING KEYS TO BUTTONS
             // find keys here https://keycode.info/
-            var YES_KEY = "KeyY"
-            var NO_KEY  = "KeyN"
+            var YES_KEY = "KeyW"
+            var NO_KEY  = "KeyP"
             if (event.code === YES_KEY && !this.yesBtn.prop("disabled")){
                 this.yesBtn.click()
             }
