@@ -69,12 +69,21 @@ class InstructionsPanel{
     constructor(){
         var self = this;
         self.startBtn = $("#startDemoBtn");
+
+        $(document).keydown(event => {
+            // BINDING KEYS TO BUTTONS
+            // find keys here https://keycode.info/
+            var CONT_KEY = "Enter"
+            if (event.code === CONT_KEY && !self.startBtn.prop("disabled")){
+                self.startBtn.click()
+            }
+        })
     }
 
     async userStartDemo(){
         var self = this;
         return new Promise(resolve => {
-            self.startBtn.click(resolve);
+            self.startBtn.one('click', resolve);
         });
     }
 }
@@ -106,11 +115,15 @@ class TaskPanel{
             // find keys here https://keycode.info/
             var YES_KEY = "KeyW"
             var NO_KEY  = "KeyP"
+            var CONT_KEY = "Enter"
             if (event.code === YES_KEY && !this.yesBtn.prop("disabled")){
                 this.yesBtn.click()
             }
             else if (event.code === NO_KEY && !this.noBtn.prop("disabled")){
                 this.noBtn.click()
+            }
+            else if (event.code === CONT_KEY && !this.continueBtn.prop("disabled")){
+                this.continueBtn.click()
             }
         })
     }
@@ -122,7 +135,7 @@ class TaskPanel{
         self.showPanel(self.textPanel)
 
         return new Promise(resolve => {
-            self.continueBtn.click(resolve);
+            self.continueBtn.one('click', resolve);
         });
     }
 
