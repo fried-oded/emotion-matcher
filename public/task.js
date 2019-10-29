@@ -42,6 +42,7 @@ class StartPanel{
         self.startBtn.click(function () {
             var subjectId = self.subjectNumTextbox.val()
             if (self.validate(subjectId)){
+                document.documentElement.requestFullscreen();
                 self.onStartCallbacks.forEach(f => f(subjectId))
             }
         });
