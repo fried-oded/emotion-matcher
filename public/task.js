@@ -263,27 +263,7 @@ class TaskPanel{
     }
 }
 
-
-//test tools
-function debug(){
-    $("#configPanel").show()
-}
-
-function stepByStep(){
-    if($("#stepByStepChk").prop('checked')){
-        var self = this;
-        $("#stepBtn").prop("disabled", false);
-
-        return new Promise(resolve => {
-            $("#stepBtn").one("click", function(){
-                $("#stepBtn").prop("disabled", true);
-                resolve();
-            });
-        });
-    }
-}
-
-
+//demo
 async function runDemo(ms, ip, tp){
     console.log("showing instructions. waiting for user")
     ms.showPanel(ms.instructionsPanel);
@@ -310,6 +290,28 @@ async function runDemo(ms, ip, tp){
         }
     }    
 }
+
+
+//test tools
+function debug(){
+    $("#configPanel").show()
+}
+
+function stepByStep(){
+    if($("#stepByStepChk").prop('checked')){
+        var self = this;
+        $("#stepBtn").prop("disabled", false);
+
+        return new Promise(resolve => {
+            $("#stepBtn").one("click", function(){
+                $("#stepBtn").prop("disabled", true);
+                resolve();
+            });
+        });
+    }
+}
+
+
 
 
 $(async function(){
