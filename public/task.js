@@ -1,3 +1,6 @@
+var SHOW_FEEDBACK = false;
+var STEP_BY_STEP = false;
+
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(async function(){
         await stepByStep();
@@ -212,7 +215,7 @@ class TaskPanel{
 
         console.debug("show image pair");
         this.showPanel(this.picsPanel);
-        var userAnswerPromise = this.getUserAnswer(correctAnswer, false); //currently disabling feedback
+        var userAnswerPromise = this.getUserAnswer(correctAnswer, SHOW_FEEDBACK);
         await sleep(750);
 
         console.debug("hiding images. waiting for user choice");
@@ -298,8 +301,7 @@ function debug(){
 }
 
 function stepByStep(){
-    if($("#stepByStepChk").prop('checked')){
-        var self = this;
+    if(STEP_BY_STEP){
         $("#stepBtn").prop("disabled", false);
 
         return new Promise(resolve => {
@@ -311,7 +313,21 @@ function stepByStep(){
     }
 }
 
+class ConfigPanel{
+    constructor(){
+        var self = this;
+        self.stepCheck = $("#stepByStepChk");
+        self.feedbackCheck = $("#ShowFeedbackCheck");
 
+        self.stepCheck.change(function(){
+            STEP_BY_STEP = this.checked;
+        })
+
+        self.feedbackCheck.change(function(){
+            SHOW_FEEDBACK = this.checked;
+        })
+    }
+}
 
 
 $(async function(){
@@ -319,6 +335,7 @@ $(async function(){
     var ip = new InstructionsPanel()
     var sp = new StartPanel()
     var tp = new TaskPanel()
+    var cp = new ConfigPanel()
     
 
     var trials = await requestData("trials")
