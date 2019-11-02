@@ -182,6 +182,9 @@ class TaskPanel{
                             $("#wrongSound")[0].play()
                         }
                     }
+                    else{
+                        $(this).removeClass("btn-secondary").addClass("btn-primary");
+                    }
                                             
                     resolve({
                         'chosenAnswer': chosenAnswer,
