@@ -150,7 +150,7 @@ class TaskPanel{
         panel.show();
     }
 
-    getUserAnswer(correctAnswer){
+    getUserAnswer(correctAnswer, showFeedback){
         var self = this;
         var startTs = Date.now()
         self.yesBtn.prop("disabled", false);
@@ -169,15 +169,17 @@ class TaskPanel{
                     self.noBtn.prop("disabled", true);
 
                     //show feedback
-                    if(chosenAnswer == correctAnswer){
-                        $(this).removeClass("btn-secondary").addClass("btn-success");
-                        $("#correctSound")[0].play()
+                    if(showFeedback){
+                        if(chosenAnswer == correctAnswer){
+                            $(this).removeClass("btn-secondary").addClass("btn-success");
+                            $("#correctSound")[0].play()
+                        }
+                        else{
+                            $(this).removeClass("btn-secondary").addClass("btn-danger");
+                            $("#wrongSound")[0].play()
+                        }
                     }
-                    else{
-                        $(this).removeClass("btn-secondary").addClass("btn-danger");
-                        $("#wrongSound")[0].play()
-                    }
-                    
+                                            
                     resolve({
                         'chosenAnswer': chosenAnswer,
                         'responseTime': Date.now() - startTs
@@ -210,7 +212,7 @@ class TaskPanel{
 
         console.debug("show image pair");
         this.showPanel(this.picsPanel);
-        var userAnswerPromise = this.getUserAnswer(correctAnswer);
+        var userAnswerPromise = this.getUserAnswer(correctAnswer, false); //currently disabling feedback
         await sleep(750);
 
         console.debug("hiding images. waiting for user choice");
