@@ -284,6 +284,34 @@ function stepByStep(){
 }
 
 
+async function runDemo(ms, ip, tp){
+    console.log("showing instructions. waiting for user")
+    ms.showPanel(ms.instructionsPanel);
+    await ip.userStartDemo()
+
+    userCorrect = false
+
+    while(! userCorrect){
+        //same
+        console.log("showing demo 1")
+        ms.showPanel(ms.taskPanel);
+        var result1 = await tp.executeOneTrial("/pics/demo/same_1.jpg", "/pics/demo/same_2.jpg", true)
+        userCorrect = userCorrect || result1.userAnswer;
+        await tp.showText(tp.textSame)
+    
+        //diff
+        console.log("showing demo 2")
+        var result2 = await tp.executeOneTrial("/pics/demo/diff_1.jpg", "/pics/demo/diff_2.jpg", false)
+        await tp.showText(tp.textDiff)
+        userCorrect = userCorrect || !result2.userAnswer;
+        
+        if(!userCorrect){
+            console.log("user failed both demos. rerunning demo")
+        }
+    }    
+}
+
+
 $(async function(){
     var ms = new MainScreen()
     var ip = new InstructionsPanel()
@@ -298,18 +326,8 @@ $(async function(){
     var subjectId = await sp.start()
     console.log("subject id: " + subjectId)
 
-    console.log("showing instructions. waiting for user")
-    ms.showPanel(ms.instructionsPanel);
-    await ip.userStartDemo()
-
-    console.log("showing demo 1")
-    ms.showPanel(ms.taskPanel);
-    await tp.executeOneTrial("/pics/demo/same_1.jpg", "/pics/demo/same_2.jpg", true)
-    await tp.showText(tp.textSame)
-
-    console.log("showing demo 2")
-    await tp.executeOneTrial("/pics/demo/diff_1.jpg", "/pics/demo/diff_2.jpg", false)
-    await tp.showText(tp.textDiff)
+    //start demo
+    await runDemo(ms, ip, tp);
 
     console.log("waiting to start")
     tp.clearFeedback()
